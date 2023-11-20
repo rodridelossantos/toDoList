@@ -68,7 +68,7 @@ function displayTasks(tasks) {
   addTaskButton.classList.add("btn");
   addTaskButton.classList.add("btn-primary");
   addTaskButton.textContent = "Nueva tarea";
-  addTaskButton.onclick = addNewTask;
+  addTaskButton.addEventListener("click", addNewTask);
   tasksList.appendChild(addTaskButton);
 }
 
