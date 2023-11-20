@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Se fija si hay un token, si no hay pide login
+// Se fija si hay un token, si no hay se le pide al usuario logear
 
 async function getTasks(token) {
   try {

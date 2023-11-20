@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "./public/index.html");
 });
 
-// Auth
+// Autenticación
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   if (username === "admin" && password === "admin") {
@@ -25,7 +25,7 @@ app.post("/login", (req, res) => {
   }
 });
 
-// Middleware que autoriza a realizar peticiones a /people
+// Middleware que autoriza a realizar peticiones a /tasks
 app.use("/tasks", (req, res, next) => {
   try {
     const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
@@ -35,11 +35,12 @@ app.use("/tasks", (req, res, next) => {
     res.status(401).json({ message: "Usuario no autorizado" });
   }
 });
-//---
 
-// Asociamos el router de people con la ruta /people
+// Asociamos el router de tasks con la ruta /tasks
 app.use("/tasks", todoRouter);
 
 app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
+  console.log(
+    `El servidor está corriendo en la siguiente dirección: http://localhost:${port}`
+  );
 });
